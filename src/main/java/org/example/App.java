@@ -47,9 +47,17 @@ public class App {
 
         stampaLista(libreria);
         System.out.println(libreria.size());
-        Map<Integer, List<Lista>> usersPerEtà = libreria.stream().filter(a -> a.getAnnoPublicazione() >= 1960).collect(Collectors.groupingBy(user -> user.getAnnoPublicazione()));
-        usersPerEtà.forEach((anno, lista) -> System.out.println("Film del: " + anno + ", " + lista));
+
+        Map<Integer, List<Lista>> listaPerPublicazione = libreria.stream().filter(a -> a.getAnnoPublicazione() >= 1960).collect(Collectors.groupingBy(list -> list.getAnnoPublicazione()));
+        listaPerPublicazione.forEach((anno, lista) -> System.out.println("Film del: " + anno + ", " + lista));
+
+        Map<Long, List<Lista>> listaPerISBN = libreria.stream().filter(a -> a.getCodiceISBN() >= 200000L).collect(Collectors.groupingBy(list -> list.getCodiceISBN()));
+        listaPerISBN.forEach((isbn, lista) -> System.out.println("Preferenza ISBN: " + isbn + ", " + lista));
+
+//        List<Lista> usersSortedByName = libreria.stream().sorted(Comparator.comparing(Lista::getAutore)).toList();
+//        usersSortedByName.forEach(System.out::println);
     }
+
 
 
     ///////////////////////////////////////////////////////////////////////////////

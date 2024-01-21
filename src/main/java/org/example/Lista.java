@@ -45,7 +45,7 @@ public class Lista extends Inclusi {
     @Override
 public String toString(){
         if(this.Periodicita== PeriodicitaT.MENSILE || this.Periodicita== PeriodicitaT.SEMESTRALE || this.Periodicita== PeriodicitaT.SETTIMANALE){
-           return  "User{" +
+           return  "Rivista{" +
                     "Periodicita'= '" + Periodicita + '\'' +
                    ",Titolo= '"+Titolo+'\''+
                     ", ISBN= '" +CodiceISBN+'\''+
@@ -53,7 +53,7 @@ public String toString(){
                     ", Pagine= '"+numeroPagine+'\''+
                     '}';
         } else {
-        return  "User{" +
+        return  "Libro{" +
                 "Autore= '" + Autore + '\'' +
                 ",Titolo= '"+Titolo+'\''+
                 ", Genere= '" + Genere +'\''+
