@@ -1,9 +1,8 @@
 package org.example;
 
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 /**
  * Hello world!
@@ -39,14 +38,17 @@ public class App {
         Lista rivista1 =new Lista(randomPeriodicitaSupplier.get(),"MotorSport", longISBNSupplier.get(), annoSupplier.get(), integerSupplier.get());
         libreria.add(rivista1);
 
-aggiungiAllaLista(libreria,1);
+
        stampaLista(libreria);
         System.out.println(libreria.size());
 
-        modificaLista(libreria,2);
-        stampaLista(libreria);
-        System.out.println(libreria.toArray()[0]);
+        aggiungiLibroAllaLibreria(libreria,"Nuovo Autore","Nuovo Titolo",null,0,0,0);
+        aggiungiLibroAllaLibreria(libreria,"Nuovo Autore","Nuovo Titolo",null,321321321,0,0);
 
+        stampaLista(libreria);
+        System.out.println(libreria.size());
+        Map<Integer, List<Lista>> usersPerEtà = libreria.stream().filter(a -> a.getAnnoPublicazione() >= 1960).collect(Collectors.groupingBy(user -> user.getAnnoPublicazione()));
+        usersPerEtà.forEach((anno, lista) -> System.out.println("Film del: " + anno + ", " + lista));
     }
 
 
@@ -56,12 +58,17 @@ aggiungiAllaLista(libreria,1);
             System.out.println(lista);
         }
     }
-    public static void aggiungiAllaLista(Set<Lista> libreria,int quantita){
-        for(int i=0;i<quantita;i++){
-libreria.add(new Lista(null,"",0,0,0));
-        }
+
+
+    public static void aggiungiLibroAllaLibreria(  Set<Lista> libreria,String autore,String titolo, Enum genere, long codiceISBN, int anno, int pagine) {
+String Autore = autore;
+String Titolo=titolo;
+Enum Genere=genere;
+long CodiceISBN=codiceISBN;
+int Anno = anno;
+int Pagine= pagine;
+        libreria.add(new Lista(Autore,Titolo,Genere,CodiceISBN,Anno,Pagine));
     }
-    public static void modificaLista(Set<Lista> libreria,int posizione){
- libreria.getClass();
-    }
+
+
 }

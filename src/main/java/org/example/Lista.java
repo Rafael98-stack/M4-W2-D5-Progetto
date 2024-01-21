@@ -21,6 +21,9 @@ public class Lista extends Inclusi {
         this.AnnoPublicazione=anno;
         this.numeroPagine=pagine;
     }
+
+
+
     public String getAutore(){
         return this.Autore;
     }
@@ -59,4 +62,7 @@ public String toString(){
                 ", Pagine= '"+numeroPagine+'\''+
                 '}';
 }}
+
+    public void remove(int numero) {
+    }
 }
