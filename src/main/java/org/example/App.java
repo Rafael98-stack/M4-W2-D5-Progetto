@@ -54,6 +54,9 @@ public class App {
         Map<Long, List<Lista>> listaPerISBN = libreria.stream().filter(a -> a.getCodiceISBN() >= 200000L).collect(Collectors.groupingBy(list -> list.getCodiceISBN()));
         listaPerISBN.forEach((isbn, lista) -> System.out.println("Preferenza ISBN: " + isbn + ", " + lista));
 
+        Map<String, List<Lista>> listaPerAutore = libreria.stream().filter(a -> a.getAutore() == "Marco").collect(Collectors.groupingBy(list -> list.getAutore()));
+        listaPerAutore.forEach((autore, lista) -> System.out.println("Preferenza ISBN: " + autore + ", " + lista));
+
 //        List<Lista> usersSortedByName = libreria.stream().sorted(Comparator.comparing(Lista::getAutore)).toList();
 //        usersSortedByName.forEach(System.out::println);
     }
